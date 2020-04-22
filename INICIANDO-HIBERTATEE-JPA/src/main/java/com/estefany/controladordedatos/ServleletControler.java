@@ -36,21 +36,53 @@ public class ServleletControler extends HttpServlet {
 		Tproducto pr = new Tproducto();
 		ProductoDAO prd = new ProductoDAO();
 		
-		String id= request.getParameter("Id");
-		String nombrepr= request.getParameter("Nproductos");
-		String preciopr= request.getParameter("Pproductos");
-		String cantidadpr= request.getParameter("Cproductos");
-		String totalpr= request.getParameter("Tproductos");
-		
-		
+		String id= null;
+		String nombrepr= null;
+		String preciopr= null;
+		String cantidadpr= null;
+		String totalpr= null;
+		try {
+		 id =request.getParameter("Id");
+		nombrepr= request.getParameter("Nproductos");
+		preciopr= request.getParameter("Pproductos");
+		cantidadpr= request.getParameter("Cproductos");
+		totalpr= request.getParameter("Tproductos");
+			
 		
 		pr.setId(Integer.parseInt(id));
 		pr.setNombreProducto(nombrepr);
 		pr.setPrecioProducto(Double.parseDouble(preciopr));
 		pr.setCantidadProducto(Integer.parseInt(cantidadpr));
 		pr.setTotalProducto(Double.parseDouble(totalpr));
-		
-		prd.agregarDatos(pr);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+
+		String acction = request.getParameter("btn");
+		if(acction.equals("GUARDAR") ) {
+				
+
+			pr.setId(Integer.parseInt(id));
+			pr.setNombreProducto(nombrepr);
+			pr.setPrecioProducto(Double.parseDouble(preciopr));
+			pr.setCantidadProducto(Integer.parseInt(cantidadpr));
+			pr.setTotalProducto(Double.parseDouble(totalpr));
+			
+			prd.agregarDatos(pr);
+		}else if (acction.equals("ACTUALIZAR")){
+			pr.setId(Integer.parseInt(id));
+			pr.setNombreProducto(nombrepr);
+			pr.setPrecioProducto(Double.parseDouble(preciopr));
+			pr.setCantidadProducto(Integer.parseInt(cantidadpr));
+			pr.setTotalProducto(Double.parseDouble(totalpr));
+			 prd.actualizarDatos(pr);
+		}else if(acction.equals("Eliminar")){
+			pr.setId(Integer.parseInt(id));
+			prd.eliminar(pr);
+		}
+
 		
 		response.sendRedirect("index.jsp");
 	}

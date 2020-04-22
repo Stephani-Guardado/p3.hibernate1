@@ -46,4 +46,34 @@ public class ProductoDAO {
 		em.flush();
 		em.getTransaction().commit();
 	}
+	
+	public void actualizarDatos(Tproducto pr) {
+		EntityManager em;
+		EntityManagerFactory emf;
+		emf = Persistence.createEntityManagerFactory("INICIANDO-HIBERTATEE-JPA");
+		em = emf.createEntityManager();
+		pr.getId();
+		pr.getNombreProducto();
+		pr.getPrecioProducto();
+		pr.getCantidadProducto();
+		pr.getTotalProducto();
+		em.getTransaction().begin();
+		em.merge(pr);
+		em.flush();
+		em.getTransaction().commit();
+		
+	}
+	public void eliminar(Tproducto pr) {
+		EntityManager em;
+		EntityManagerFactory emf;
+		emf = Persistence.createEntityManagerFactory("INICIANDO-HIBERTATEE-JPA");
+		em = emf.createEntityManager();
+		
+		pr=em.getReference(Tproducto.class, pr.getId());
+		
+		em.getTransaction().begin();
+		em.remove(pr);
+		em.flush();
+		em.getTransaction().commit();
+	}
 }

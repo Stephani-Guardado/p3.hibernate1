@@ -22,8 +22,8 @@
        	<td>${item.cantidadProducto}</td>
        	<td>${item.totalProducto}</td>
     	<td>
-    	<a href="" class="btn btn-warning">ELIMINAR</a>
-    	<a href="" class="btn btn-danger">ACTUALIZAR</a>
+    	<a href="ServleletControler?btn=Eliminar&id=${item.id}" class="btn btn-warning">ELIMINAR</a>
+    	<a href="funciones.jsp?idbus =${item.id}&Npr =${item.nombreProducto}&Ppr=${item.precioProducto}&Cpr=${item.cantidadProducto}&Tpr=${item.totalProducto}" class="btn btn-danger">ACTUALIZAR</a>
     	</td>
 
        	</tr>
