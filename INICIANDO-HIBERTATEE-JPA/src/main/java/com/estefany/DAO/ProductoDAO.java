@@ -34,4 +34,16 @@ public class ProductoDAO {
 		return listapr;
 		
 	}
+	public void agregarDatos(Tproducto pr) {
+		
+		EntityManager em;
+		EntityManagerFactory emf;
+		emf = Persistence.createEntityManagerFactory("INICIANDO-HIBERTATEE-JPA");
+		em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(pr);
+		em.flush();
+		em.getTransaction().commit();
+	}
 }

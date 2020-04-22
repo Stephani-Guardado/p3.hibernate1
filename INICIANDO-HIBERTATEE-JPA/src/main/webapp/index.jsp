@@ -4,7 +4,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#carga').click( function(event) {
+		
        var btn = $('#carga').val();
        $.post('ServleletControler',{
 
@@ -21,6 +21,11 @@
        	<td>${item.precioProducto}</td>
        	<td>${item.cantidadProducto}</td>
        	<td>${item.totalProducto}</td>
+    	<td>
+    	<a href="" class="btn btn-warning">ELIMINAR</a>
+    	<a href="" class="btn btn-danger">ACTUALIZAR</a>
+    	</td>
+
        	</tr>
 
 
@@ -28,37 +33,13 @@
 
        }
        
-       });
+     
 		});
 	});
 </script>
 <body>
-<h2>AGREGAR DATOS</h2>
-<table align="center">
-	<thead>
-	</thead>
-<tbody>
-<tr>
-<td>				
 
-<p>id</p> <input type="text" name="Id">
-<p>Nombre producto</p> <input type="text" name="Nproductos">
-<p>Precio producto</p> <input type="text" name="Pproductos">
-<p>Cantidad producto</p> <input type="text" name="Cproductos">
-<p>Total producto</p> <input type="text" name="Tproductos">
-<br>
-<br>
-</td>
-</tr>
-
-</tbody>
-	
-</table>
-
-<input type="submit" name="btn" value="agregar">
-<input type="submit" name="btn" value="eliminar">
-<input type="submit" name="btn" value="modificar">
-<input type="submit" name="btn" value="cargar" id="carga">
+<a href="funciones.jsp" class="btn btn-info">AGREGAR</a>
 
 <table class="table table-dark" id="tablaDatos">
 	<thead>
@@ -67,6 +48,7 @@
 		<th>PRECIO</th>
 		<th>CANTIDAD</th>
 		<th>TOTAL</th>
+		<th>OPCIONES</th>
 	</thead>
 	<tbody>
 		

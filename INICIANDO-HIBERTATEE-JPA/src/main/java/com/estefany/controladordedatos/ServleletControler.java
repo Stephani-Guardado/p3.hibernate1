@@ -33,7 +33,26 @@ public class ServleletControler extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Tproducto pr = new Tproducto();
+		ProductoDAO prd = new ProductoDAO();
+		
+		String id= request.getParameter("Id");
+		String nombrepr= request.getParameter("Nproductos");
+		String preciopr= request.getParameter("Pproductos");
+		String cantidadpr= request.getParameter("Cproductos");
+		String totalpr= request.getParameter("Tproductos");
+		
+		
+		
+		pr.setId(Integer.parseInt(id));
+		pr.setNombreProducto(nombrepr);
+		pr.setPrecioProducto(Double.parseDouble(preciopr));
+		pr.setCantidadProducto(Integer.parseInt(cantidadpr));
+		pr.setTotalProducto(Double.parseDouble(totalpr));
+		
+		prd.agregarDatos(pr);
+		
+		response.sendRedirect("index.jsp");
 	}
 
 	/**
